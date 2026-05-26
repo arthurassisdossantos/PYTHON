@@ -12,7 +12,8 @@ def calcular():
         else:
             resultado = math.sqrt(num1)
             etapas = f"√{num1} = {resultado}"
-        return resultado, etapas
+        # CORRIGIDO: Agora renderiza o template em vez de retornar a tupla
+        return render_template("calculadora.html", resultado=resultado, etapas=etapas)
 
     elif operacao == "log":
         if num1 <= 0:
@@ -21,11 +22,13 @@ def calcular():
         else:
             resultado = math.log10(num1)
             etapas = f"log10({num1}) = {resultado}"
-        return resultado, etapas
+        # CORRIGIDO: Agora renderiza o template em vez de retornar a tupla
+        return render_template("calculadora.html", resultado=resultado, etapas=etapas)
 
     num2_valor = request.form.get("num2", "").strip()
     if not num2_valor:
-        return "", "Informe o segundo número para esta operação."
+        # CORRIGIDO: Mensagem tratada como erro enviada para o template
+        return render_template("calculadora.html", resultado="Erro", etapas="Informe o segundo número para esta operação.")
 
     num2 = float(num2_valor)
 
