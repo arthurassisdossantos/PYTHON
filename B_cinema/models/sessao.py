@@ -7,7 +7,7 @@ class Sessao(ModeloBase):
     # TODO ALUNO: FK filme_id → filmes.id
     # TODO ALUNO: FK sala_id → salas.id
     filme_id = db.Column(db.Integer, db.ForeignKey("filme.id"), nullable=False)
-    sala.id = db.Column(db.Integer, db.ForeignKey("sala.id"), nullable=False)
+    sala_id = db.Column(db.Integer, db.ForeignKey("sala.id"), nullable=False)
     data_hora = db.Column(db.DateTime, nullable=False)
     preco = db.Column(db.Float, nullable=False)
     # TODO ALUNO: relationship filme, sala, ingressos
